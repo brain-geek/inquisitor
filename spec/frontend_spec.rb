@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
-describe "My App" do
+describe "Basic frontend test" do
   def app
     @app ||= Sinatra::Application
   end
