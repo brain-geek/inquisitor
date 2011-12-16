@@ -4,7 +4,6 @@ require 'rubygems'
 require 'rack/test'
 require 'rspec'
 require 'webrat'
-require 'ruby-debug' rescue ''
 require 'ffaker'
 
 require 'machinist/data_mapper'
