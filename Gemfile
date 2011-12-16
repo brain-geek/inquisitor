@@ -15,6 +15,8 @@ gem 'webrat'
 gem 'data_mapper'
 gem 'dm-sqlite-adapter'
 
-#auto reload uin development
-gem 'shotgun'
-gem 'ruby-debug'
+group :development do
+  #auto reload in development
+  gem 'shotgun'
+  gem 'ruby-debug'
+end
