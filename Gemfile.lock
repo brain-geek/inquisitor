@@ -1,14 +1,74 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    addressable (2.2.6)
+    bcrypt-ruby (3.0.1)
+    columnize (0.3.5)
+    data_mapper (1.2.0)
+      dm-aggregates (~> 1.2.0)
+      dm-constraints (~> 1.2.0)
+      dm-core (~> 1.2.0)
+      dm-migrations (~> 1.2.0)
+      dm-serializer (~> 1.2.0)
+      dm-timestamps (~> 1.2.0)
+      dm-transactions (~> 1.2.0)
+      dm-types (~> 1.2.0)
+      dm-validations (~> 1.2.0)
+    data_objects (0.10.7)
+      addressable (~> 2.1)
     diff-lcs (1.1.3)
+    dm-aggregates (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-constraints (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-core (1.2.0)
+      addressable (~> 2.2.6)
+    dm-do-adapter (1.2.0)
+      data_objects (~> 0.10.6)
+      dm-core (~> 1.2.0)
+    dm-migrations (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-serializer (1.2.1)
+      dm-core (~> 1.2.0)
+      fastercsv (~> 1.5.4)
+      json (~> 1.6.1)
+      json_pure (~> 1.6.1)
+      multi_json (~> 1.0.3)
+    dm-sqlite-adapter (1.2.0)
+      dm-do-adapter (~> 1.2.0)
+      do_sqlite3 (~> 0.10.6)
+    dm-timestamps (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-transactions (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-types (1.2.1)
+      bcrypt-ruby (~> 3.0.0)
+      dm-core (~> 1.2.0)
+      fastercsv (~> 1.5.4)
+      json (~> 1.6.1)
+      multi_json (~> 1.0.3)
+      stringex (~> 1.3.0)
+      uuidtools (~> 2.1.2)
+    dm-validations (1.2.0)
+      dm-core (~> 1.2.0)
+    do_sqlite3 (0.10.7)
+      data_objects (= 0.10.7)
+    fastercsv (1.5.4)
+    ffaker (1.10.1)
     haml (3.1.4)
+    json (1.6.3)
+    json_pure (1.6.3)
+    linecache (0.46)
+      rbx-require-relative (> 0.0.4)
+    multi_json (1.0.4)
+    nokogiri (1.5.0)
     rack (1.3.5)
     rack-protection (1.1.4)
       rack
     rack-test (0.6.1)
       rack (>= 1.0)
     rake (0.8.7)
+    rbx-require-relative (0.0.5)
     rspec (2.7.0)
       rspec-core (~> 2.7.0)
       rspec-expectations (~> 2.7.0)
@@ -17,18 +77,37 @@ GEM
     rspec-expectations (2.7.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.7.0)
+    ruby-debug (0.10.4)
+      columnize (>= 0.1)
+      ruby-debug-base (~> 0.10.4.0)
+    ruby-debug-base (0.10.4)
+      linecache (>= 0.3)
+    shotgun (0.9)
+      rack (>= 1.0)
     sinatra (1.3.1)
       rack (~> 1.3, >= 1.3.4)
       rack-protection (~> 1.1, >= 1.1.2)
       tilt (~> 1.3, >= 1.3.3)
+    stringex (1.3.0)
     tilt (1.3.3)
+    uuidtools (2.1.2)
+    webrat (0.7.3)
+      nokogiri (>= 1.2.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  data_mapper
+  dm-sqlite-adapter
+  ffaker
   haml
   rack-test
   rake
   rspec
+  ruby-debug
+  shotgun
   sinatra
+  webrat

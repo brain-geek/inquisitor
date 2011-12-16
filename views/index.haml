@@ -7,4 +7,14 @@
 
   %body
     %h1 Index page for app
-  
+
+  %form{:action => "/new", :method => "post", :id => 'add'}
+    %fieldset
+      %ol
+        %li
+          %label{:for => "node[name]"}Title
+          %input{:type => "text", :name => "node[name]", :id => "add-name-field"}
+        %li
+          %label{:for => "node[url]"}Url
+          %input{:type => "text", :name => "node[url]", :id => "add-url-field"}
+      %input{:type => "submit", :value => "Send", :class => "button"}
