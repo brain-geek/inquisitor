@@ -4,7 +4,7 @@ require 'rubygems'
 require 'rack/test'
 require 'rspec'
 require 'webrat'
-require 'ruby-debug' if RUBY_VERSION < '1.9'
+require 'ruby-debug' rescue ''
 require 'ffaker'
 
 # set test environment
