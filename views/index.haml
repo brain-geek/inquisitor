@@ -12,6 +12,13 @@
         .page-header
           %h1 Index page for app
 
+        #list
+          %table
+            - @nodes.each do |node|
+              %tr
+                %td= node.url
+                %td= node.name 
+
         %form{:action => "/new", :method => "post", :id => 'add'}
           %fieldset
             %legend Add new node

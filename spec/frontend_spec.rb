@@ -11,16 +11,24 @@ describe "Basic frontend test" do
     Node.all.destroy
   end  
 
-  it "should respond to /" do
+  it "should respond to / and list all" do
+    nodes = []
+    5.times { nodes.push Node.make }
     get '/'
+
     last_response.should be_ok
+
+    nodes.each do |n|
+      last_response.should contain n.name
+      last_response.should contain n.url
+    end
   end
 
   it "should create at /new" do 
-    name = Faker::Name.name
-    post '/new', "node[url]" => 'http://google.com', "node[name]" => name
+    node = Node.make_unsaved.attributes
+    post '/new', 'node' => node #"node[url]" => 'http://google.com', "node[name]" => name
 
     last_response.should be_redirect
-    Node.count(:name => name, :url => 'http://google.com').should == 1
+    Node.count(:name => node[:name], :url => node[:url]).should == 1
   end
 end

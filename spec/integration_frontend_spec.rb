@@ -14,15 +14,15 @@ describe "Basic frontend test", :type => :request do
   end
 
   it "should create at /new" do 
-    name = Faker::Name.name
+    node = Node.make_unsaved.attributes
     visit '/'
     response_body.should contain 'Simple monitoring index page'
-    Node.count(:name => 'Sample name', :url => 'http://google.com').should == 0
+    Node.count(node).should == 0
 
-    fill_in "add-name-field", :with => 'Sample name'
-    fill_in "add-url-field", :with => 'http://google.com'
+    fill_in "add-name-field", :with => node[:name]
+    fill_in "add-url-field", :with => node[:url]
     click_button "Send"  
 
-    Node.count(:name => 'Sample name', :url => 'http://google.com').should == 1
+    Node.count(node).should == 1
   end
 end

@@ -17,6 +17,7 @@ end
 DataMapper.auto_upgrade!
 
 get '/' do
+  @nodes = Node.all
   haml :index, :format => :html5
 end
 

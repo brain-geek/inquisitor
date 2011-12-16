@@ -3,6 +3,7 @@ source :rubygems
 gem 'sinatra'
 
 gem 'haml'
+gem 'machinist'
 
 #gem 'outpost'
 

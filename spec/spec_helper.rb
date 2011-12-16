@@ -7,6 +7,9 @@ require 'webrat'
 require 'ruby-debug' rescue ''
 require 'ffaker'
 
+require 'machinist/data_mapper'
+require 'sham'
+
 # set test environment
 set :environment, :test
 set :run, false
@@ -27,4 +30,16 @@ RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include Webrat::Methods
   config.include Webrat::Matchers
+  config.before(:all)    { Sham.reset(:before_all)  }
+  config.before(:each)   { Sham.reset(:before_each) }  
+end
+
+Sham.define do
+  url   { 'http://' + Faker::Lorem.words(2).join('_').downcase + '.com' }
+  name  { Faker::Name.name }
+end
+
+Node.blueprint do
+  url
+  name
 end
