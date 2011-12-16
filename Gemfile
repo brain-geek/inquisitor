@@ -5,7 +5,7 @@ gem 'sinatra'
 gem 'haml'
 gem 'machinist'
 
-#gem 'outpost'
+gem 'outpost'
 
 gem 'rake'
 gem 'rspec'
