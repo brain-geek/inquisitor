@@ -6,6 +6,8 @@ gem 'haml'
 gem 'machinist'
 
 gem 'outpost'
+gem 'net-ping'
+
 
 gem 'rake'
 gem 'rspec'
