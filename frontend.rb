@@ -1,7 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/link_header'
 require 'haml'
-require 'app/models'
+require './app/models'
 
 class Monitor < Sinatra::Base
   helpers Sinatra::LinkHeader
