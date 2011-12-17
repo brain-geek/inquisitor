@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:brain-geek/machinist.git
+  remote: https://github.com/brain-geek/machinist.git
   revision: 5200bafc0eb5f4828db78367c8a2d3b92083ea3f
   branch: 1.0-maintenance
   specs:
