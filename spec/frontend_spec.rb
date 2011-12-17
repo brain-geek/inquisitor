@@ -4,7 +4,7 @@ describe "Basic frontend test" do
   include Rack::Test::Methods
 
   def app
-    @app ||= Sinatra::Application
+    @app ||= Monitor
   end
 
   before do

@@ -10,10 +10,12 @@ require 'machinist/data_mapper'
 require 'sham'
 
 # set test environment
-set :environment, :test
-set :run, false
-set :raise_errors, true
-set :logging, false
+Monitor.class_eval do
+  set :environment, :test
+  set :run, false
+  set :raise_errors, true
+  set :logging, false
+end
 
 db_path = "sqlite3://#{Dir.pwd}/test.db"
 

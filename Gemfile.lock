@@ -9,6 +9,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.2.6)
+    backports (2.3.0)
     bcrypt-ruby (3.0.1)
     columnize (0.3.5)
     data_mapper (1.2.0)
@@ -60,6 +61,7 @@ GEM
       dm-core (~> 1.2.0)
     do_sqlite3 (0.10.7)
       data_objects (= 0.10.7)
+    eventmachine (0.12.10)
     fastercsv (1.5.4)
     ffaker (1.10.1)
     haml (3.1.4)
@@ -99,6 +101,13 @@ GEM
       rack (~> 1.3, >= 1.3.4)
       rack-protection (~> 1.1, >= 1.1.2)
       tilt (~> 1.3, >= 1.3.3)
+    sinatra-contrib (1.3.1)
+      backports (>= 2.0)
+      eventmachine
+      rack-protection
+      rack-test
+      sinatra (~> 1.3.0)
+      tilt (~> 1.3)
     stringex (1.3.0)
     tilt (1.3.3)
     uuidtools (2.1.2)
@@ -124,4 +133,5 @@ DEPENDENCIES
   ruby-debug
   shotgun
   sinatra
+  sinatra-contrib
   webrat

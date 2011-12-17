@@ -6,7 +6,7 @@ describe "Basic frontend test", :type => :request do
   include Webrat::Matchers
 
   def app
-    @app ||= Sinatra::Application
+    @app ||= Monitor
   end
 
   before do

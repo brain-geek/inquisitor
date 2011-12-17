@@ -1,3 +1,3 @@
 require 'frontend'
-run Sinatra::Application
+run Monitor
 
