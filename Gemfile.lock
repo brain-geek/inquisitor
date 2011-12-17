@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:brain-geek/machinist.git
+  revision: 5200bafc0eb5f4828db78367c8a2d3b92083ea3f
+  branch: 1.0-maintenance
+  specs:
+    machinist (1.0.6)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -60,7 +67,6 @@ GEM
     json_pure (1.6.3)
     linecache (0.46)
       rbx-require-relative (> 0.0.4)
-    machinist (1.0.6)
     multi_json (1.0.4)
     net-ldap (0.2.2)
     net-ping (1.5.2)
@@ -109,7 +115,7 @@ DEPENDENCIES
   dm-sqlite-adapter
   ffaker
   haml
-  machinist
+  machinist!
   net-ping
   outpost
   rack-test
