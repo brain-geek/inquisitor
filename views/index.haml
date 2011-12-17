@@ -15,9 +15,10 @@
         #list
           %table
             - @nodes.each do |node|
-              %tr
+              %tr{ :class => "node node-#{node.id}"}
                 %td= node.url
                 %td= node.name 
+                %td= node.check
 
         %form{:action => "/new", :method => "post", :id => 'add'}
           %fieldset

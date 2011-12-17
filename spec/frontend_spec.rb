@@ -13,14 +13,23 @@ describe "Basic frontend test" do
 
   it "should respond to / and list all" do
     nodes = []
-    5.times { nodes.push Node.make }
+    5.times do 
+      node = Node.make
+      node.should_receive(:check).and_return(node.id.odd? ? :up : :down)
+      nodes.push node
+    end
+
+    Node.should_receive(:all).and_return(nodes)
     get '/'
 
     last_response.should be_ok
 
     nodes.each do |n|
-      last_response.should contain n.name
-      last_response.should contain n.url
+      within ".node-#{n.id}" do |s|
+        s.should contain n.name
+        s.should contain n.url
+        s.should contain(n.id.odd? ? 'up' : 'down')
+      end
     end
   end
 

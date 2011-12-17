@@ -36,7 +36,7 @@ RSpec.configure do |config|
 end
 
 Sham.define do
-  url   { 'http://' + Faker::Lorem.words(2).join('_').downcase + '.com' }
+  url   { 'http://' + Faker::Lorem.words(2).join('-').downcase + '.com' }
   name  { Faker::Name.name }
 end
 
