@@ -12,7 +12,6 @@ class Node
   property :name,         String
 
   validates_presence_of :url
-  validates_presence_of :name
 
   def check
     outpost.run
