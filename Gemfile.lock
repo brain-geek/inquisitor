@@ -7,9 +7,10 @@ GIT
 
 GIT
   remote: https://github.com/brain-geek/outpost.git
-  revision: f20750afd147aa5bfca23aa2f9f9187448e763c0
+  revision: 960e41a6a6dcd6f87dd58bf663165ec3cec27dca
   specs:
     outpost (0.2.3)
+      net-ping
 
 GEM
   remote: http://rubygems.org/
@@ -17,7 +18,7 @@ GEM
     addressable (2.2.6)
     backports (2.3.0)
     bcrypt-ruby (3.0.1)
-    columnize (0.3.5)
+    columnize (0.3.6)
     data_mapper (1.2.0)
       dm-aggregates (~> 1.2.0)
       dm-constraints (~> 1.2.0)
@@ -130,7 +131,6 @@ DEPENDENCIES
   ffaker
   haml
   machinist!
-  net-ping
   outpost!
   rack-test
   rake
