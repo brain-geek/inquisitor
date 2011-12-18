@@ -15,15 +15,23 @@ class Node
   validates_presence_of :name
 
   def check
-    uri = URI.parse(url)
-    outpost = Outpost::Application.new
-
-    outpost.add_scout Outpost::Scouts::Http => 'master http server' do
-      options :host => uri.host, :port => uri.port
-      report :up, :response_code => 200
-    end
-
     outpost.run
+  end
+
+  protected
+  def outpost
+    @outpost ||= begin
+      uri = URI.parse(url)
+      outpost = Outpost::Application.new
+      outpost.name = self.name
+
+      outpost.add_scout Outpost::Scouts::Http => '' do
+        options :host => uri.host, :port => uri.port
+        report :up, :response_code => [200,301,302]
+      end
+
+      outpost
+    end
   end
 end
 
