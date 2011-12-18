@@ -7,6 +7,12 @@ describe "Check if it is up" do
     n.check.should == :up
   end
 
+  it "should tell that page with redirect is ok, not down" do
+    n = Node.make :url => 'http://google.com'
+
+    n.check.should == :up
+  end
+
   it "should check if it tells that site is not ok" do
     n = Node.make :url => 'http://akjfsjjgsdf.google.com'
 
