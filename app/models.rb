@@ -23,7 +23,7 @@ class Node
   end
 
   def check_protocol
-    outpost.run
+    outpost
     true
   rescue URI::InvalidURIError
     false
