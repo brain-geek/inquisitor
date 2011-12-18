@@ -27,17 +27,12 @@ describe "Check if it is up" do
     end    
   end
 
-  # describe 'ping checking' do
-  #   it "should pass if host is reachable" do
-  #     n = Node.make :url => 'ping://127.0.0.1'
-  #     n.check.should == :up
-  #   end
-
-  #   it "should pass if host is not reachable" do
-  #     n = Node.make :url => 'ping://0.0.0.0'
-  #     n.check.should == :down
-  #   end    
-  # end
+  describe 'ping checking' do
+    it "should pass if host is reachable" do
+      n = Node.make :url => 'ping://127.0.0.1'
+      n.check.should == :up
+    end
+  end
 
   describe 'validation' do
     it "should fail if unknown protocol of url is passed" do
@@ -46,12 +41,14 @@ describe "Check if it is up" do
     end
   end
 
-  it "should return logs from outpost" do
-    n = Node.make
-    o = Object.new
-    o.should_receive(:messages).and_return([])
-    n.should_receive(:outpost).and_return(o)
+  describe "work with outpost" do
+    it "should return logs from outpost" do
+      n = Node.make
+      o = Object.new
+      o.should_receive(:messages).and_return([])
+      n.should_receive(:outpost).and_return(o)
 
-    n.last_log
+      n.last_log
+    end
   end
 end

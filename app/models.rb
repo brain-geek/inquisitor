@@ -43,6 +43,11 @@ class Node
           report :up, :response_code => 200...400
           report :down, :response_code => 400..600
         end
+      when 'ping'
+        outpost.add_scout Outpost::Scouts::Ping => '' do
+          options :host => uri.host
+          report :up, :response_time => {:less_than => 500}
+        end
       else
         raise URI::InvalidURIError
       end
