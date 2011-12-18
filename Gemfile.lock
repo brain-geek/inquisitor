@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/brain-geek/outpost.git
-  revision: 110b807bf05a1af9761d3caa349a7f1445186374
+  revision: f20750afd147aa5bfca23aa2f9f9187448e763c0
   specs:
     outpost (0.2.3)
 
