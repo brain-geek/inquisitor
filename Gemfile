@@ -5,7 +5,7 @@ gem 'sinatra-contrib'
 
 gem 'haml'
 
-gem 'outpost'
+gem 'outpost', :git => 'https://github.com/brain-geek/outpost.git'
 gem 'net-ping'
 
 gem 'rake'

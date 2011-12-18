@@ -5,6 +5,12 @@ GIT
   specs:
     machinist (1.0.6)
 
+GIT
+  remote: https://github.com/brain-geek/outpost.git
+  revision: d64c46ad9e23bbff783d0cef473cec2b29255ace
+  specs:
+    outpost (0.2.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -74,7 +80,6 @@ GEM
     net-ping (1.5.2)
       net-ldap (~> 0.2.2)
     nokogiri (1.5.0)
-    outpost (0.2.3)
     rack (1.3.5)
     rack-protection (1.1.4)
       rack
@@ -126,7 +131,7 @@ DEPENDENCIES
   haml
   machinist!
   net-ping
-  outpost
+  outpost!
   rack-test
   rake
   rspec

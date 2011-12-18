@@ -26,7 +26,7 @@ class Node
 
       outpost.add_scout Outpost::Scouts::Http => '' do
         options :host => uri.host, :port => uri.port
-        report :up, :response_code => [200,301,302]
+        report :up, :response_code => 200...400
       end
 
       outpost
