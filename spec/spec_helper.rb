@@ -15,13 +15,12 @@ Monitor.class_eval do
   set :run, false
   set :raise_errors, true
   set :logging, false
+
+  configure :test do
+    DataMapper.setup(:default, 'sqlite::memory:')
+    DataMapper.auto_upgrade!
+  end
 end
-
-db_path = "sqlite3://#{Dir.pwd}/test.db"
-
-File.delete(db_path) if File.exist?(db_path)
-DataMapper.setup(:default, db_path)
-DataMapper.auto_upgrade!
 
 Webrat.configure do |config|
   config.mode= :rack
