@@ -12,21 +12,39 @@ class Node
   property :name,         String
 
   validates_presence_of :url
+  validates_with_method :url, :method => :check_protocol
 
   def check
     outpost.run
   end
 
+  def last_log
+    outpost.messages.join('<br />')
+  end
+
+  def check_protocol
+    outpost.run
+    true
+  rescue URI::InvalidURIError
+    false
+  end
+
   protected
   def outpost
     @outpost ||= begin
-      uri = URI.parse(url)
       outpost = Outpost::Application.new
+      uri = URI.parse(url)
       outpost.name = self.name
 
-      outpost.add_scout Outpost::Scouts::Http => '' do
-        options :host => uri.host, :port => uri.port
-        report :up, :response_code => 200...400
+      case uri.scheme 
+      when 'http'
+        outpost.add_scout Outpost::Scouts::Http => '' do
+          options :host => uri.host, :port => uri.port, :path => uri.path.empty? ? '/' : uri.path
+          report :up, :response_code => 200...400
+          report :down, :response_code => 400..600
+        end
+      else
+        raise URI::InvalidURIError
       end
 
       outpost
