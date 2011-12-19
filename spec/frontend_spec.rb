@@ -1,4 +1,5 @@
 require File.dirname(__FILE__) + '/spec_helper'
+require 'json'
 
 describe "Basic frontend test" do
   include Rack::Test::Methods
@@ -13,11 +14,7 @@ describe "Basic frontend test" do
 
   it "should respond to / and list all" do
     nodes = []
-    5.times do 
-      node = Node.make
-      node.should_receive(:check).and_return(node.id.odd? ? :up : :down)
-      nodes.push node
-    end
+    5.times { nodes.push Node.make }
     Node.should_receive(:all).and_return(nodes)
 
     contacts = []
@@ -32,7 +29,7 @@ describe "Basic frontend test" do
       within "#nodes .element-#{n.id}" do |scope|
         scope.should contain n.name
         scope.should contain n.url
-        scope.should contain(n.id.odd? ? 'up' : 'down')
+        scope.should have_selector("td[rel='status/#{n.id}']")
       end
     end
 
@@ -41,6 +38,20 @@ describe "Basic frontend test" do
         scope.should contain n.email
       end
     end      
+  end
+
+  it "should respond with service status" do 
+    n = Node.make
+    n.should_receive(:check).and_return(:up)
+    n.should_receive(:last_log).and_return('best log in the world')
+
+    Node.should_receive(:get).with(n.id).and_return(n)
+
+    get "/status/#{n.id}"
+
+    resp = JSON.parse(response.body)
+    resp['status'].should == 'up'
+    resp['log'].should == 'best log in the world'
   end
 
   it "should create node at /new_node" do 

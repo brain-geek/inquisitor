@@ -8,9 +8,9 @@
         %tr{ :class => "element-#{node.id}"}
           %td= node.url
           %td= node.name 
-          %td= node.check
+          %td.status-load{:rel => "status/#{node.id}"} checking
 
-  %form{:action => "/new_node", :method => "post", :id => 'add'}
+  %form{:action => "new_node", :method => "post", :id => 'add'}
     %fieldset
       %legend Add new node
       .clearfix
@@ -29,7 +29,7 @@
         %tr{ :class => "element-#{contact.id}"}
           %td= contact.email
 
-  %form{:action => "/new_contact", :method => "post", :id => 'add'}
+  %form{:action => "new_contact", :method => "post", :id => 'add'}
     %fieldset
       %legend Add new contact
       .clearfix
