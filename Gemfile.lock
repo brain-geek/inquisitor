@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/brain-geek/outpost.git
-  revision: 960e41a6a6dcd6f87dd58bf663165ec3cec27dca
+  revision: 862c7668f8afe5b6f8dc1e6e9dde8806ba2a25a0
   specs:
     outpost (0.2.3)
       net-ping
