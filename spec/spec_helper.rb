@@ -37,9 +37,14 @@ end
 Sham.define do
   url   { 'http://' + Faker::Lorem.words(2).join('-').downcase + '.com' }
   name  { Faker::Name.name }
+  email { Faker::Internet.email }
 end
 
 Node.blueprint do
   url
   name
+end
+
+Contact.blueprint do
+  email
 end
