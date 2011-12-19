@@ -11,7 +11,7 @@ class Monitor < Sinatra::Base
     haml :index, :format => :html5
   end
 
-  post '/new' do
+  post '/new_node' do
     Node.create params["node"]
 
     redirect '/'

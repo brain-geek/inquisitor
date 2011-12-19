@@ -35,7 +35,7 @@ describe "Basic frontend test" do
 
   it "should create at /new" do 
     node = Node.make_unsaved.attributes
-    post '/new', 'node' => node
+    post '/new_node', 'node' => node
 
     last_response.should be_redirect
     Node.count(:name => node[:name], :url => node[:url]).should == 1
