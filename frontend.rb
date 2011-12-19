@@ -8,6 +8,7 @@ class Monitor < Sinatra::Base
 
   get '/' do
     @nodes = Node.all
+    @contacts = Contact.all
     haml :index, :format => :html5
   end
 
@@ -16,4 +17,10 @@ class Monitor < Sinatra::Base
 
     redirect '/'
   end
+
+  post '/new_contact' do
+    Contact.create params["contact"]
+
+    redirect '/'
+  end 
 end

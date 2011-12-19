@@ -35,7 +35,7 @@ describe "Check if it is up" do
     it "should not pass if host is not reachable" do
       n = Node.make :url => 'ping://sdfsadfasdfasdf.asdfasdfasdf.asdfasdf'
       n.check.should == :down
-    end
+    end    
   end
 
   describe 'validation' do

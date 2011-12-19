@@ -12,22 +12,39 @@
         .page-header
           %h1 Index page for app
 
-        #list
-          %table
-            - @nodes.each do |node|
-              %tr{ :class => "node node-#{node.id}"}
-                %td= node.url
-                %td= node.name 
-                %td= node.check
+        #nodes
+          .list
+            %table
+              - @nodes.each do |node|
+                %tr{ :class => "element-#{node.id}"}
+                  %td= node.url
+                  %td= node.name 
+                  %td= node.check
 
-        %form{:action => "new_node", :method => "post", :id => 'add'}
-          %fieldset
-            %legend Add new node
-            .clearfix
-              %label{:for => "node[name]"}Title
-              %input{:type => "text", :name => "node[name]", :id => "add-name-field"}
-            .clearfix
-              %label{:for => "node[url]"}Url
-              %input{:type => "text", :name => "node[url]", :id => "add-url-field"}
-            .actions
-              %input{:type => "submit", :value => "Send", :class => "btn"}
+          %form{:action => "/new_node", :method => "post", :id => 'add'}
+            %fieldset
+              %legend Add new node
+              .clearfix
+                %label{:for => "node[name]"}Title
+                %input{:type => "text", :name => "node[name]", :id => "add-name-field"}
+              .clearfix
+                %label{:for => "node[url]"}Url
+                %input{:type => "text", :name => "node[url]", :id => "add-url-field"}
+              .actions
+                %input{:type => "submit", :value => "Add node", :class => "btn"}
+
+        #contacts
+          .list
+            %table
+              - @contacts.each do |contact|
+                %tr{ :class => "element-#{contact.id}"}
+                  %td= contact.email
+
+          %form{:action => "/new_contact", :method => "post", :id => 'add'}
+            %fieldset
+              %legend Add new contact
+              .clearfix
+                %label{:for => "contact[email]"}E-mail
+                %input{:type => "text", :name => "contact[email]", :id => "add-email-field"}
+              .actions
+                %input{:type => "submit", :value => "Add contact", :class => "btn"}

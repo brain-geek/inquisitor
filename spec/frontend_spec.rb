@@ -18,26 +18,46 @@ describe "Basic frontend test" do
       node.should_receive(:check).and_return(node.id.odd? ? :up : :down)
       nodes.push node
     end
-
     Node.should_receive(:all).and_return(nodes)
+
+    contacts = []
+    3.times { contacts.push Contact.make }
+    Contact.should_receive(:all).and_return(contacts)
+    
     get '/'
 
     last_response.should be_ok
 
     nodes.each do |n|
-      within ".node-#{n.id}" do |s|
-        s.should contain n.name
-        s.should contain n.url
-        s.should contain(n.id.odd? ? 'up' : 'down')
+      within "#nodes .element-#{n.id}" do |scope|
+        scope.should contain n.name
+        scope.should contain n.url
+        scope.should contain(n.id.odd? ? 'up' : 'down')
       end
     end
+
+    contacts.each do |n|
+      within "#contacts .element-#{n.id}" do |scope|
+        scope.should contain n.email
+      end
+    end      
   end
 
-  it "should create at /new" do 
-    node = Node.make_unsaved.attributes
-    post '/new_node', 'node' => node
+  it "should create node at /new_node" do 
+    test_new(Node)
+  end
+
+  it "should create contact at /new_contact" do 
+    test_new(Contact)
+  end
+
+  private
+  def test_new(cls)
+    attrs = cls.make_unsaved.attributes
+    cls.count(attrs).should == 0
+    post "/new_#{cls.to_s.downcase}", cls.to_s.downcase => attrs
 
     last_response.should be_redirect
-    Node.count(:name => node[:name], :url => node[:url]).should == 1
+    cls.count(attrs).should == 1
   end
 end
