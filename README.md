@@ -17,5 +17,5 @@ Starting web frontend:
 Copyright
 ---------
 
-Copyright (c) 2011 @brain-geek. See {file:LICENSE} for details.
+Copyright (c) 2011 @brain-geek. See LICENSE for details.
 
