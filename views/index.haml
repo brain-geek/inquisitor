@@ -8,7 +8,8 @@
         %tr{ :class => "element-#{node.id}"}
           %td= node.url
           %td= node.name 
-          %td.status-load{:rel => "status/#{node.id}"} checking
+          %td.status-load{:rel => "status/#{node.id}"}
+            %img{:src => 'loading.png'}
 
   %form{:action => "new_node", :method => "post", :id => 'add'}
     %fieldset
