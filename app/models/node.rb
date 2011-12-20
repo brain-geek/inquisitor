@@ -1,6 +1,4 @@
 require 'uri'
-require 'outpost'
-require 'outpost/scouts'
 
 class Node
   include DataMapper::Resource  
@@ -29,7 +27,7 @@ class Node
   protected
   def outpost
     @outpost ||= begin
-      outpost = Outpost::Application.new
+      outpost = OutpostFactory.create
       uri = URI.parse(url)
       outpost.name = self.name
 
