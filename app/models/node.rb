@@ -13,6 +13,11 @@ class Node
     outpost.run
   end
 
+  def check_and_notify
+    outpost.run
+    outpost.notify
+  end
+
   def last_log
     outpost.messages.join('<br />')
   end
@@ -27,9 +32,8 @@ class Node
   protected
   def outpost
     @outpost ||= begin
-      outpost = OutpostFactory.create
+      outpost = OutpostFactory.create(self.name)
       uri = URI.parse(url)
-      outpost.name = self.name
 
       case uri.scheme 
       when 'http'

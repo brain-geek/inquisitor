@@ -1,12 +1,16 @@
 require 'sinatra/base'
 require 'sinatra/link_header'
 require "sinatra/json"
+require "sinatra/config_file"
 require 'haml'
 require './app/models'
 
 class Monitor < Sinatra::Base
   helpers Sinatra::LinkHeader
   helpers Sinatra::JSON
+  register Sinatra::ConfigFile
+
+  config_file 'config.yml'
 
   get '/' do
     @nodes = Node.all

@@ -6,6 +6,9 @@ gem 'sinatra-contrib'
 gem 'haml'
 
 gem 'outpost', :git => 'https://github.com/brain-geek/outpost.git'
+gem 'mail'
+
+gem 'eventmachine'
 
 gem 'rake'
 gem 'rspec'
