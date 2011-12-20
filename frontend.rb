@@ -41,6 +41,7 @@ class Monitor < Sinatra::Base
       DataMapper.setup(:default, 'sqlite::memory:')
       puts 'Using sqlite by default!'
     end
+    DataMapper.auto_upgrade!
     set :run, false
     set :raise_errors, true
     set :logging, false

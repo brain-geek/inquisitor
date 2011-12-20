@@ -5,7 +5,7 @@ require 'outpost/scouts'
 class Node
   include DataMapper::Resource  
   property :id,           Serial
-  property :url,          String, :index => true, :unique => true
+  property :url,          String, :index => :unique
   property :name,         String, :index => true
 
   validates_presence_of :url
