@@ -14,8 +14,10 @@ class Node
   end
 
   def check_and_notify
-    outpost.run
-    outpost.notify
+    if outpost.run != :up
+      puts 'sending a letter'
+      outpost.notify
+    end
   end
 
   def last_log

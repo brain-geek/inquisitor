@@ -1,9 +1,7 @@
-development:
-  mail_message_title: Notify from monitor
-  mail_send_from: outpost@example.com
-test:
-  mail_message_title: Notify from monitor
-  mail_send_from: test-receiver@gmail.com
-production:
-  mail_message_title: Notify from monitor
-  mail_send_from: outpost@example.com
+mail_send_from: 
+  development: outpost@example.com
+  test: test-receiver@gmail.com
+  production: outpost@example.com
+
+mail_message_title: Notify from monitor
+check_period: 5
