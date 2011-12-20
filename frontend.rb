@@ -34,7 +34,7 @@ class Monitor < Sinatra::Base
   # set test environment
   configure :test do
     if ENV['DB'] == 'sqlite'
-      DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
+      DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/test.db")
     elsif ENV['DB'] == 'redis'
       DataMapper.setup(:default, {:adapter  => "redis"})      
     else
