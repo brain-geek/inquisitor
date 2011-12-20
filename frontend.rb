@@ -8,7 +8,6 @@ class Monitor < Sinatra::Base
   helpers Sinatra::LinkHeader
   helpers Sinatra::JSON
 
-
   get '/' do
     @nodes = Node.all
     @contacts = Contact.all
@@ -32,3 +31,5 @@ class Monitor < Sinatra::Base
     redirect '/'
   end 
 end
+
+require './config/environments'

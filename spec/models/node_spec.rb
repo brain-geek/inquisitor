@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/spec_helper'
+require File.join(File.dirname(__FILE__), '..', 'spec_helper.rb')
 
 describe "Check if it is up" do
   describe 'http checking' do
