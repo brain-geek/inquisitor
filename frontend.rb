@@ -34,11 +34,11 @@ class Monitor < Sinatra::Base
   # set test environment
   configure :test do
     if ENV['DB'] == 'sqlite'
-      DataMapper.setup(:default, 'sqlite::memory:')
+      DataMapper.setup(:default, 'sqlite3::memory:')
     elsif ENV['DB'] == 'redis'
       DataMapper.setup(:default, {:adapter  => "redis"})      
     else
-      DataMapper.setup(:default, 'sqlite::memory:')
+      DataMapper.setup(:default, 'sqlite3::memory:')
       puts 'Using sqlite by default!'
     end
     DataMapper.auto_upgrade!
