@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/spec_helper'
+require File.join(File.dirname(__FILE__), 'spec_helper.rb')
 
 describe "Basic frontend test", :type => :request do
   include Rack::Test::Methods
@@ -16,25 +16,25 @@ describe "Basic frontend test", :type => :request do
   it "should create node" do 
     node = Node.make_unsaved.attributes
     visit '/'
-    Node.count(node).should == 0
+    Node.first(node).should be_nil
 
     fill_in "add-name-field", :with => node[:name]
     fill_in "add-url-field", :with => node[:url]
     click_button "Add node"
 
-    Node.count(node).should == 1
+    Node.first(node).should_not be_nil
   end
 
 
   it "should create new contact" do 
     contact = Contact.make_unsaved.attributes
     visit '/'
-    Contact.count(contact).should == 0
+    Contact.first(contact).should be_nil
 
     fill_in "add-email-field", :with => contact[:email]
     click_button "Add contact"  
 
-    Contact.count(contact).should == 1
+    Contact.first(contact).should_not be_nil
   end
 
 end

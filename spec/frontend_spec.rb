@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/spec_helper'
+require File.join(File.dirname(__FILE__), 'spec_helper.rb')
 require 'json'
 
 describe "Basic frontend test" do
@@ -65,10 +65,10 @@ describe "Basic frontend test" do
   private
   def test_new(cls)
     attrs = cls.make_unsaved.attributes
-    cls.count(attrs).should == 0
+    cls.first(attrs).should be_nil
     post "/new_#{cls.to_s.downcase}", cls.to_s.downcase => attrs
 
     last_response.should be_redirect
-    cls.count(attrs).should == 1
+    cls.first(attrs).should_not be_nil
   end
 end
