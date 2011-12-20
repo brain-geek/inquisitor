@@ -1,6 +1,9 @@
 development:
-  send_from: outpost@example.com
+  mail_message_title: Notify from monitor
+  mail_send_from: outpost@example.com
 test:
-  send_from: test-receiver@gmail.com
+  mail_message_title: Notify from monitor
+  mail_send_from: test-receiver@gmail.com
 production:
-  send_from: outpost@example.com
+  mail_message_title: Notify from monitor
+  mail_send_from: outpost@example.com

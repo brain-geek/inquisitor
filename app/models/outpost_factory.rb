@@ -8,9 +8,11 @@ module OutpostFactory
     outpost.name = name
 
     Contact.all.each do |contact|
-      outpost.add_notifier Outpost::Notifiers::Email, :from    => Monitor.settings.send_from,
+      outpost.add_notifier Outpost::Notifiers::Email, {
+              :from    => Monitor.settings.mail_send_from,
               :to      => contact.email,
-              :subject => 'Message from monitor'
+              :subject => Monitor.settings.mail_message_title
+          }
     end
 
     outpost

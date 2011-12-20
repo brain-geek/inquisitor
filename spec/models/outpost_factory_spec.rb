@@ -6,12 +6,14 @@ describe OutpostFactory do
 	end
 
   it "should add email notifiers" do
+    Monitor.mail_send_from = subject = Faker::Name.name
+    Monitor.mail_message_title = mail = Faker::Internet.email
+
   	outpost = OutpostFactory.create
-  	# require 'ruby-debug'; debugger
-  	# 123
 
   	outpost.notifiers.first[0].should == Outpost::Notifiers::Email
-  	outpost.notifiers.first[1][:from].should == 'test-receiver@gmail.com'
+  	outpost.notifiers.first[1][:from].should == subject
+    outpost.notifiers.first[1][:subject].should == mail
   	outpost.notifiers.first[1][:to].should == @contact.email
   end
 
@@ -21,9 +23,7 @@ describe OutpostFactory do
     end
 
     Mail::TestMailer.deliveries.should == []
-
   	Node.make(:url => 'ping://non-existant.domain').check_and_notify
-
   	Mail::TestMailer.deliveries.count.should == 1
   end
 end
