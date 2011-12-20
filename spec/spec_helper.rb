@@ -20,3 +20,5 @@ RSpec.configure do |config|
 end
 
 require File.join(File.dirname(__FILE__), 'support/blueprints.rb')
+
+DataMapper.auto_upgrade!
