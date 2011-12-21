@@ -5,7 +5,7 @@ describe "Basic frontend test" do
   include Rack::Test::Methods
 
   def app
-    @app ||= Monitor
+    @app ||= Monit::Web
   end
 
   before do

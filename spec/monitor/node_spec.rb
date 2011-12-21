@@ -1,6 +1,6 @@
 require File.join(File.dirname(__FILE__), '..', 'spec_helper.rb')
 
-describe "Check if it is up" do
+describe Node do
   describe 'http checking' do
     it "should check if it tells that http site is ok" do
       n = Node.make :url => 'http://ya.ru'

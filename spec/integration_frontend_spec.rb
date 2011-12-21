@@ -6,7 +6,7 @@ describe "Basic frontend test", :type => :request do
   include Webrat::Matchers
 
   def app
-    @app ||= Monitor
+    @app ||= Monit::Web
   end
 
   before do

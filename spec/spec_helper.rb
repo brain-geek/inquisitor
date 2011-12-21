@@ -1,11 +1,11 @@
-require File.join(File.dirname(__FILE__), '..', 'frontend.rb')
 require 'rubygems'
 require 'rack/test'
 require 'rspec'
 require 'webrat'
 require 'ffaker'
+require File.join(File.dirname(__FILE__), '..', 'lib', 'monit.rb')
 
-Monitor.set :environment, :test
+Monit::Web.set :environment, :test
 
 Webrat.configure do |config|
   config.mode= :rack

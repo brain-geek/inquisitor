@@ -9,9 +9,9 @@ module OutpostFactory
 
     Contact.all.each do |contact|
       outpost.add_notifier Outpost::Notifiers::Email, {
-              :from    => Monitor.settings.mail_send_from,
+              :from    => Monit::Web.settings.mail_send_from,
               :to      => contact.email,
-              :subject => Monitor.settings.mail_message_title
+              :subject => Monit::Web.settings.mail_message_title
           }
     end
 
