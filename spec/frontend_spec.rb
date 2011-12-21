@@ -1,16 +1,10 @@
-require File.join(File.dirname(__FILE__), 'spec_helper.rb')
+require File.join(File.dirname(__FILE__), 'spec_integration_helper.rb')
 require 'json'
 
 describe "Basic frontend test" do
-  include Rack::Test::Methods
-
   def app
     @app ||= Monit::Web
   end
-
-  before do
-    Monit::Node.all.destroy
-  end  
 
   it "should respond to / and list all" do
     nodes = []

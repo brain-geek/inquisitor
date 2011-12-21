@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), '..', 'spec_helper.rb')
+require File.join(File.dirname(__FILE__), '..', 'spec_integration_helper.rb')
 
 describe 'Outpost factory' do
 	before do

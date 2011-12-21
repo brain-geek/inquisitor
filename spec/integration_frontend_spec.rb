@@ -1,16 +1,8 @@
-require File.join(File.dirname(__FILE__), 'spec_helper.rb')
+require File.join(File.dirname(__FILE__), 'spec_integration_helper.rb')
 
 describe "Basic frontend test", :type => :request do
-  include Rack::Test::Methods
-  include Webrat::Methods
-  include Webrat::Matchers
-
   def app
     @app ||= Monit::Web
-  end
-
-  before do
-    Monit::Node.all.destroy
   end
 
   it "should create node" do 
@@ -24,7 +16,6 @@ describe "Basic frontend test", :type => :request do
 
     Monit::Node.first(node).should_not be_nil
   end
-
 
   it "should create new contact" do 
     contact = Monit::Contact.make_unsaved.attributes
