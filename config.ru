@@ -1,3 +1,3 @@
-require 'frontend'
-run Monitor
+require 'lib/monit'
+run Monit::Web
 

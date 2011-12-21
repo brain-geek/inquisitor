@@ -1,8 +1,8 @@
 require File.join(File.dirname(__FILE__), '..', 'spec_helper.rb')
 
-describe OutpostFactory do
+describe 'Outpost factory' do
 	before do
-		@contact = Contact.make
+		@contact = Monit::Contact.make
 	end
 
   it "should add email notifiers" do
@@ -20,7 +20,7 @@ describe OutpostFactory do
     end
 
     Mail::TestMailer.deliveries.should == []
-  	Node.make(:url => 'ping://non-existant.domain').check_and_notify
+  	Monit::Node.make(:url => 'ping://non-existant.domain').check_and_notify
   	Mail::TestMailer.deliveries.count.should == 1
   end
 end

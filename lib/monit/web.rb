@@ -26,24 +26,24 @@ module Monit
     config_file "#{dir}/../../config.yml"
 
     get '/' do
-      @nodes = Node.all
-      @contacts = Contact.all
+      @nodes = Monit::Node.all
+      @contacts = Monit::Contact.all
       haml :index, :format => :html5
     end
 
     get '/status/:id' do
-      n = Node.get(params[:id].to_i)
+      n = Monit::Node.get(params[:id].to_i)
       json :status => n.check, :log => n.last_log, :id => n.id
     end
 
     post '/new_node' do
-      Node.create params["node"]
+      Monit::Node.create params["node"]
 
       redirect '/'
     end
 
     post '/new_contact' do
-      Contact.create params["contact"]
+      Monit::Contact.create params["contact"]
 
       redirect '/'
     end 

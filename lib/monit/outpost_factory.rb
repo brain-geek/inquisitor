@@ -7,7 +7,7 @@ module OutpostFactory
     outpost = Outpost::Application.new
     outpost.name = name
 
-    Contact.all.each do |contact|
+    Monit::Contact.all.each do |contact|
       outpost.add_notifier Outpost::Notifiers::Email, {
               :from    => Monit::Web.settings.mail_send_from,
               :to      => contact.email,

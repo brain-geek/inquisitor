@@ -9,17 +9,17 @@ describe "Basic frontend test" do
   end
 
   before do
-    Node.all.destroy
+    Monit::Node.all.destroy
   end  
 
   it "should respond to / and list all" do
     nodes = []
-    5.times { nodes.push Node.make }
-    Node.should_receive(:all).and_return(nodes)
+    5.times { nodes.push Monit::Node.make }
+    Monit::Node.should_receive(:all).and_return(nodes)
 
     contacts = []
-    3.times { contacts.push Contact.make }
-    Contact.should_receive(:all).and_return(contacts)
+    3.times { contacts.push Monit::Contact.make }
+    Monit::Contact.should_receive(:all).and_return(contacts)
     
     get '/'
 
@@ -41,11 +41,11 @@ describe "Basic frontend test" do
   end
 
   it "should respond with service status" do 
-    n = Node.make
+    n = Monit::Node.make
     n.should_receive(:check).and_return(:up)
     n.should_receive(:last_log).and_return('best log in the world')
 
-    Node.should_receive(:get).with(n.id).and_return(n)
+    Monit::Node.should_receive(:get).with(n.id).and_return(n)
 
     get "/status/#{n.id}"
 
@@ -55,20 +55,19 @@ describe "Basic frontend test" do
   end
 
   it "should create node at /new_node" do 
-    test_new(Node)
+    test_new(Monit::Node)
   end
 
   it "should create contact at /new_contact" do 
-    test_new(Contact)
+    test_new(Monit::Contact)
   end
 
   private
   def test_new(cls)
     attrs = cls.make_unsaved.attributes
+    name = cls.to_s.split('::').last.downcase
     cls.first(attrs).should be_nil
-    post "/new_#{cls.to_s.downcase}", cls.to_s.downcase => attrs
-
-    last_response.should be_redirect
+    post "/new_#{name}", name => attrs
     cls.first(attrs).should_not be_nil
   end
 end
