@@ -1,5 +1,3 @@
 - Make it rubygem and try mouting in rails app
 - Automated runner
-- Kill all humans
 - UI in web app
-- Try postgre/mysql in travis

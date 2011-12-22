@@ -55,4 +55,26 @@ describe Monit::Node do
       n.last_log
     end
   end
+
+  it "should run all checks at once" do
+    nodes = []
+
+    5.times do 
+      node = Monit::Node.make
+      node.should_receive(:run).and_return(:down)
+      node.should_receive(:notify)
+      nodes.push node
+    end
+
+    5.times do 
+      node = Monit::Node.make
+      node.should_receive(:run).and_return(:up)
+      node.should_not_receive(:notify)
+      nodes.push node
+    end
+
+    Monit::Node.should_receive(:all).and_return(nodes)
+
+    Monit.check_all
+  end
 end

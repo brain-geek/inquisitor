@@ -10,13 +10,16 @@ module Monit
     validates_presence_of :url
     validates_with_method :url, :method => :check_protocol
 
-    def check
-      outpost.run
-    end
+    delegate :run, :notify, :to => :outpost
+    alias :check :run 
 
     def check_and_notify
-      outpost.notify if outpost.run != :up
+      notify unless run == :up
     end
+
+    def self.check_all
+      all.each &:check_and_notify
+    end    
 
     def last_log
       outpost.messages.join('<br />')

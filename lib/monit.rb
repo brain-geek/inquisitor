@@ -3,6 +3,7 @@ require 'outpost/scouts'
 require 'outpost/notifiers/email'
 
 require 'data_mapper'
+require File.join(File.dirname(__FILE__), 'monit', 'extensions.rb')
 require File.join(File.dirname(__FILE__), 'monit', 'node.rb')
 require File.join(File.dirname(__FILE__), 'monit', 'contact.rb')
 require File.join(File.dirname(__FILE__), 'monit', 'settings.rb')
@@ -28,7 +29,7 @@ module Monit
     def settings
       @settings ||= Settings.new
     end
+
+    delegate :check_all, :to => Node
   end
 end
-
-# require File.join(File.dirname(__FILE__), 'monit', 'web.rb')
