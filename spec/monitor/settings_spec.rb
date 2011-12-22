@@ -32,4 +32,10 @@ describe 'App settings' do
 
      Monit.settings.db_path = :path
   end
+
+  it "should do mass asignments" do
+    Monit.settings.set :mail_from => 'me@gmail.com', :check_period => 900
+    Monit.settings.mail_from.should == 'me@gmail.com'
+    Monit.settings.check_period.should == 900
+  end
 end

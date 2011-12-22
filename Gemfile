@@ -8,6 +8,8 @@ gem 'haml'
 gem 'outpost', :git => 'https://github.com/brain-geek/outpost.git'
 gem 'mail'
 
+gem 'slop'
+
 gem 'rake'
 gem 'rspec'
 gem 'rack-test'

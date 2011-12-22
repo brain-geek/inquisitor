@@ -12,5 +12,13 @@ module Monit
       DataMapper.setup(:default, path)
       DataMapper.auto_upgrade!
     end
+
+    def set(params)
+      params.each do |key, value|
+        if respond_to?("#{key}=")
+          send("#{key}=", value)
+        end
+      end
+    end
   end
 end
