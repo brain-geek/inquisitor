@@ -5,18 +5,12 @@ GIT
   specs:
     machinist (1.0.6)
 
-GIT
-  remote: https://github.com/brain-geek/outpost.git
-  revision: 862c7668f8afe5b6f8dc1e6e9dde8806ba2a25a0
-  specs:
-    outpost (0.2.3)
-      net-ping
-
 PATH
   remote: .
   specs:
     monit (0.1.0)
       data_mapper
+      emk-sinatra-url-for
       haml
       mail
       net-ping
@@ -89,6 +83,8 @@ GEM
       dm-core (~> 1.2.0)
     do_sqlite3 (0.10.7)
       data_objects (= 0.10.7)
+    emk-sinatra-url-for (0.2.1)
+      sinatra (>= 0.9.1.1)
     eventmachine (0.12.10)
     fastercsv (1.5.4)
     ffaker (1.10.1)
@@ -109,6 +105,8 @@ GEM
     net-ping (1.5.2)
       net-ldap (~> 0.2.2)
     nokogiri (1.5.0)
+    outpost (0.2.4)
+      net-ping
     polyglot (0.3.3)
     rack (1.3.5)
     rack-protection (1.1.4)
@@ -166,7 +164,7 @@ DEPENDENCIES
   ffaker
   machinist!
   monit!
-  outpost!
+  outpost
   rack-test
   rake
   rspec

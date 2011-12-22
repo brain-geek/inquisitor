@@ -2,7 +2,7 @@ source :rubygems
 
 gemspec
 
-gem 'outpost', :git => 'https://github.com/brain-geek/outpost.git'
+gem 'outpost'
 
 gem 'rake'
 gem 'rspec'
