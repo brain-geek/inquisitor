@@ -22,7 +22,6 @@ module Monit
 
     outpost
   end
-
 end
 
 # require File.join(File.dirname(__FILE__), 'monit', 'web.rb')

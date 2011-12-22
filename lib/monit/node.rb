@@ -15,10 +15,7 @@ module Monit
     end
 
     def check_and_notify
-      if outpost.run != :up
-        # puts 'sending a letter'
-        outpost.notify
-      end
+      outpost.notify if outpost.run != :up
     end
 
     def last_log

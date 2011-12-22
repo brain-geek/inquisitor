@@ -22,7 +22,6 @@ module Monit
 
     set :static, true
 
-    #delme
     config_file "#{dir}/../../config.yml"
 
     get '/' do
@@ -48,7 +47,7 @@ module Monit
       redirect '/'
     end 
 
-    # set test environment
+    # set environments
     configure :test do
       if ENV['DB'] == 'sqlite'
         DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/test.db")
@@ -64,7 +63,6 @@ module Monit
       set :logging, false
     end
 
-    #set development environment
     configure :development do
       DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
       DataMapper.auto_upgrade!    
@@ -73,7 +71,6 @@ module Monit
       set :logging, true    
     end
 
-    #set development environment
     configure :production do
       DataMapper.setup(:default, settings.database)
       DataMapper.auto_upgrade! 

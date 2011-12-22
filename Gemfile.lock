@@ -146,7 +146,6 @@ DEPENDENCIES
   data_mapper
   dm-redis-adapter
   dm-sqlite-adapter
-  eventmachine
   ffaker
   haml
   machinist!

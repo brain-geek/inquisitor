@@ -8,8 +8,6 @@ gem 'haml'
 gem 'outpost', :git => 'https://github.com/brain-geek/outpost.git'
 gem 'mail'
 
-gem 'eventmachine'
-
 gem 'rake'
 gem 'rspec'
 gem 'rack-test'
@@ -18,7 +16,6 @@ gem 'webrat'
 gem 'machinist', :git => 'https://github.com/brain-geek/machinist.git', :branch => '1.0-maintenance'
 
 gem 'data_mapper'
-#TODO: remove this?
 gem 'dm-sqlite-adapter'
 gem 'dm-redis-adapter'
 
