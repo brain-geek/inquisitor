@@ -22,5 +22,7 @@ gem 'dm-redis-adapter'
 group :development do
   #auto reload web server in development
   gem 'shotgun'
+  gem 'autotest'
+  gem 'autotest-growl'
   gem 'ruby-debug', :platforms => :ruby_18
 end

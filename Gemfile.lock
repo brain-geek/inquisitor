@@ -15,7 +15,11 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
+    ZenTest (4.6.2)
     addressable (2.2.6)
+    autotest (4.4.6)
+      ZenTest (>= 4.4.1)
+    autotest-growl (0.2.16)
     backports (2.3.0)
     bcrypt-ruby (3.0.1)
     columnize (0.3.6)
@@ -143,6 +147,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autotest
+  autotest-growl
   data_mapper
   dm-redis-adapter
   dm-sqlite-adapter
