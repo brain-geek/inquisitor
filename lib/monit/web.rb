@@ -1,14 +1,12 @@
 require 'sinatra/base'
 require 'sinatra/link_header'
 require 'sinatra/json'
-require 'sinatra/config_file'
 require 'haml'
 
 module Monit
   class Web < Sinatra::Base
     helpers Sinatra::LinkHeader
     helpers Sinatra::JSON
-    register Sinatra::ConfigFile
 
     dir = File.dirname(File.expand_path(__FILE__))
 
@@ -21,6 +19,7 @@ module Monit
     end
 
     set :static, true
+    set :run, false    
 
     get '/' do
       @nodes = Monit::Node.all
@@ -47,29 +46,17 @@ module Monit
 
     # set environments
     configure :test do
-      if ENV['DB'] == 'sqlite'
-        Monit.settings.db_path = "sqlite3://#{Dir.pwd}/test.db"
-      elsif ENV['DB'] == 'redis'
-        Monit.settings.db_path ={:adapter  => "redis"}
-      else
-        Monit.settings.db_path = 'sqlite3::memory:'
-        puts 'Using sqlite by default!'
-      end
-
-      set :run, false
       set :raise_errors, true
       set :logging, false
     end
 
     configure :development do
       Monit.settings.db_path = "sqlite3://#{Dir.pwd}/development.db"
-      set :run, false
       set :raise_errors, true
       set :logging, true    
     end
 
     configure :production do
-      set :run, false
       set :raise_errors, false
       set :logging, false
     end  

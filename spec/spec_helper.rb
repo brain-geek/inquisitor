@@ -10,6 +10,15 @@ RSpec.configure do |config|
   config.before(:each)   { Sham.reset(:before_each) }  
 end
 
-Monit.settings.db_path = "sqlite3://#{Dir.pwd}/test.db"
+if ENV['DB'] == 'sqlite'
+  Monit.settings.db_path = "sqlite3://#{Dir.pwd}/test.db"
+  puts "Using sqlite"
+elsif ENV['DB'] == 'redis'
+  Monit.settings.db_path ={:adapter  => "redis"}
+  puts "Using redis db"
+else
+  Monit.settings.db_path = 'sqlite3::memory:'
+  puts 'Using sqlite by default!'
+end
 
 require File.join(File.dirname(__FILE__), 'support/blueprints.rb')
