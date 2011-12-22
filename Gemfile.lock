@@ -12,6 +12,18 @@ GIT
     outpost (0.2.3)
       net-ping
 
+PATH
+  remote: .
+  specs:
+    monit (0.1.0)
+      haml
+      mail
+      net-ping
+      outpost
+      sinatra
+      sinatra-contrib
+      slop
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -152,16 +164,12 @@ DEPENDENCIES
   dm-redis-adapter
   dm-sqlite-adapter
   ffaker
-  haml
   machinist!
-  mail
+  monit!
   outpost!
   rack-test
   rake
   rspec
   ruby-debug
   shotgun
-  sinatra
-  sinatra-contrib
-  slop
   webrat
