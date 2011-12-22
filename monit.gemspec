@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.files = `git ls-files -- {lib,spec}/*`.split("\n") + ["README.md", "LICENSE"]
 
+  s.add_dependency 'data_mapper'
+
   s.add_dependency 'outpost'
   s.add_dependency 'net-ping'
   s.add_dependency 'mail'
@@ -24,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'sinatra'
   s.add_dependency 'sinatra-contrib'
   s.add_dependency 'haml'
+  s.add_dependency 'emk-sinatra-url-for'
 
   s.add_dependency 'slop'
 end

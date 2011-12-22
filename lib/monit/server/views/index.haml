@@ -8,10 +8,10 @@
         %tr{ :class => "element-#{node.id}"}
           %td= node.url
           %td= node.name 
-          %td.status-load{:rel => "status/#{node.id}"}
-            %img{:src => 'loading.gif'}
+          %td.status-load{:rel => url_for("status/#{node.id}")}
+            %img{:src => url_for('loading.gif')}
 
-  %form{:action => "new_node", :method => "post", :id => 'add'}
+  %form{:action => url_for("/new_node"), :method => "post", :id => 'add'}
     %fieldset
       %legend Add new node
       .clearfix
@@ -30,7 +30,7 @@
         %tr{ :class => "element-#{contact.id}"}
           %td= contact.email
 
-  %form{:action => "new_contact", :method => "post", :id => 'add'}
+  %form{:action => url_for("/new_contact"), :method => "post", :id => 'add'}
     %fieldset
       %legend Add new contact
       .clearfix

@@ -11,7 +11,6 @@ gem 'ffaker'
 gem 'webrat'
 gem 'machinist', :git => 'https://github.com/brain-geek/machinist.git', :branch => '1.0-maintenance'
 
-gem 'data_mapper'
 gem 'dm-sqlite-adapter'
 gem 'dm-redis-adapter'
 

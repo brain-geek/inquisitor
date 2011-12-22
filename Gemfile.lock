@@ -16,6 +16,7 @@ PATH
   remote: .
   specs:
     monit (0.1.0)
+      data_mapper
       haml
       mail
       net-ping
@@ -160,7 +161,6 @@ PLATFORMS
 
 DEPENDENCIES
   autotest
-  data_mapper
   dm-redis-adapter
   dm-sqlite-adapter
   ffaker

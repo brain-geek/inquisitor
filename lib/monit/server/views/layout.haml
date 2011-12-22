@@ -3,9 +3,11 @@
   %head
     %title Simple monitoring index page
     %meta{:content => "text/html;charset=utf-8", "http-equiv" => "Content-Type"}
-    = stylesheet 'http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css', 'style.css'
+    = stylesheet 'http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css', url_for('/style.css')
     %script{:src => 'http://code.jquery.com/jquery-1.7.1.min.js'}
-    %script{:src => 'script.js'}
+    %script{:src => url_for('/script.js')}
+    :javascript
+      $(function(){$('body').attr('root_path', '#{url_for("/")}')});
 
   %body
     .container

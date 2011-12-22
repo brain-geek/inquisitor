@@ -1,12 +1,14 @@
 require 'sinatra/base'
 require 'sinatra/link_header'
 require 'sinatra/json'
+require 'sinatra/url_for'
 require 'haml'
 
 module Monit
   class Web < Sinatra::Base
     helpers Sinatra::LinkHeader
     helpers Sinatra::JSON
+    helpers Sinatra::UrlForHelper
 
     dir = File.dirname(File.expand_path(__FILE__))
 
@@ -19,7 +21,9 @@ module Monit
     end
 
     set :static, true
-    set :run, false    
+    set :run, false
+
+    set :environment, :production
 
     get '/' do
       @nodes = Monit::Node.all
@@ -35,13 +39,13 @@ module Monit
     post '/new_node' do
       Monit::Node.create params["node"]
 
-      redirect '/'
+      redirect url_for('/')
     end
 
     post '/new_contact' do
       Monit::Contact.create params["contact"]
 
-      redirect '/'
+      redirect url_for('/')
     end 
 
     # set environments
