@@ -12,7 +12,13 @@ Usage
 -----
 Starting web frontend:
 
-    ruby -rubygems frontend.rb
+    rackup config.ru
+
+
+Example using runner from console:
+
+	bin/monitor -d sqlite3://`pwd`/sqlite_database.db
+
 
 Copyright
 ---------

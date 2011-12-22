@@ -19,11 +19,7 @@ opts = Slop.parse do
 end
 
 opts = opts.to_hash.delete_if{|key, value| value.nil? }
-puts opts.inspect
 
 Monit.settings.set opts
 
-Monit::Node.all.each do |node|
-  node.check_and_notify
-  puts "checked node #{node.id}"
-end
+Monit.check_all
