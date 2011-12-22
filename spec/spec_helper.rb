@@ -10,4 +10,6 @@ RSpec.configure do |config|
   config.before(:each)   { Sham.reset(:before_each) }  
 end
 
+Monit.settings.db_path = "sqlite3://#{Dir.pwd}/test.db"
+
 require File.join(File.dirname(__FILE__), 'support/blueprints.rb')

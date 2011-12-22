@@ -2,5 +2,4 @@
 - Automated runner
 - Kill all humans
 - UI in web app
-- Add own settings class, avoid using sinatra config, as it is not allways accessible
 - Try postgre/mysql in travis

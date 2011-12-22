@@ -22,8 +22,6 @@ module Monit
 
     set :static, true
 
-    config_file "#{dir}/../../config.yml"
-
     get '/' do
       @nodes = Monit::Node.all
       @contacts = Monit::Contact.all
@@ -50,30 +48,27 @@ module Monit
     # set environments
     configure :test do
       if ENV['DB'] == 'sqlite'
-        DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/test.db")
+        Monit.settings.db_path = "sqlite3://#{Dir.pwd}/test.db"
       elsif ENV['DB'] == 'redis'
-        DataMapper.setup(:default, {:adapter  => "redis"})      
+        Monit.settings.db_path ={:adapter  => "redis"}
       else
-        DataMapper.setup(:default, 'sqlite3::memory:')
+        Monit.settings.db_path = 'sqlite3::memory:'
         puts 'Using sqlite by default!'
       end
-      DataMapper.auto_upgrade!
+
       set :run, false
       set :raise_errors, true
       set :logging, false
     end
 
     configure :development do
-      DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
-      DataMapper.auto_upgrade!    
+      Monit.settings.db_path = "sqlite3://#{Dir.pwd}/development.db"
       set :run, false
       set :raise_errors, true
       set :logging, true    
     end
 
     configure :production do
-      DataMapper.setup(:default, settings.database)
-      DataMapper.auto_upgrade! 
       set :run, false
       set :raise_errors, false
       set :logging, false

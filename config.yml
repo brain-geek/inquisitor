@@ -1,7 +1,0 @@
-mail_send_from: 
-  development: outpost@example.com
-  test: test-receiver@gmail.com
-  production: outpost@example.com
-
-mail_message_title: Notify from monitor
-check_period: 5

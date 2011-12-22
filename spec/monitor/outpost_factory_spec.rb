@@ -11,8 +11,6 @@ describe 'Outpost factory' do
     outpost.name.should == 'title'
 
   	outpost.notifiers.first[0].should == Outpost::Notifiers::Email
-  	outpost.notifiers.first[1][:from].should == 'test-receiver@gmail.com'
-    outpost.notifiers.first[1][:subject].should == 'Notify from monitor'
   	outpost.notifiers.first[1][:to].should == @contact.email
   end
 
