@@ -6,7 +6,9 @@ describe 'Outpost factory' do
 	end
 
   it "should add email notifiers" do
-  	outpost = OutpostFactory.create
+  	outpost = Monit.create_outpost 'title'
+
+    outpost.name.should == 'title'
 
   	outpost.notifiers.first[0].should == Outpost::Notifiers::Email
   	outpost.notifiers.first[1][:from].should == 'test-receiver@gmail.com'

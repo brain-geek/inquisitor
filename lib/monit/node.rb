@@ -35,7 +35,7 @@ module Monit
     protected
     def outpost
       @outpost ||= begin
-        outpost = OutpostFactory.create(self.name)
+        outpost = Monit.create_outpost(self.name)
         uri = URI.parse(url)
 
         case uri.scheme 
