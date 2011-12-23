@@ -3,8 +3,25 @@ html, body
   background-color: #EEE;
 }
 
-.content {
+.content 
+{
   background-color: white;
   padding: 20px;
   margin: 0 -20px;
+}
+
+td.status-load 
+{
+	width: 40px;
+}
+
+#nodes table 
+{
+	margin-bottom: 0px;
+}
+
+#nodes fieldset
+{
+	padding-left:10px;
+	display:none;
 }

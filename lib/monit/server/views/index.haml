@@ -1,40 +1,35 @@
-.page-header
-  %h1 Index page for app
-
+%h1 Check points
 #nodes
-  .list
+  %form{:action => url_for("/new_node"), :method => "post", :id => 'add_node', :class => 'form-stacked'}
     %table
       - @nodes.each do |node|
         %tr{ :class => "element-#{node.id}"}
           %td= node.url
           %td= node.name 
           %td.status-load{:rel => url_for("status/#{node.id}")}
-            %img{:src => url_for('loading.gif')}
-
-  %form{:action => url_for("/new_node"), :method => "post", :id => 'add'}
+            %img{:src => url_for('loading.gif'), :height => 36, :width => 32}
+          -#%td
+            %button.btn.danger Delete
+      %tr.create_form
+        %td{:colspan => 2}
+          %input{:type => "text", :name => "node[url]", :id => "add-url-field"}
+        %td
+          %button.btn.info.show_detailed More
     %fieldset
-      %legend Add new node
       .clearfix
         %label{:for => "node[name]"}Title
         %input{:type => "text", :name => "node[name]", :id => "add-name-field"}
-      .clearfix
-        %label{:for => "node[url]"}Url
-        %input{:type => "text", :name => "node[url]", :id => "add-url-field"}
       .actions
         %input{:type => "submit", :value => "Add node", :class => "btn"}
 
+%h2 Contacts
 #contacts
   .list
-    %table
-      - @contacts.each do |contact|
-        %tr{ :class => "element-#{contact.id}"}
-          %td= contact.email
-
-  %form{:action => url_for("/new_contact"), :method => "post", :id => 'add'}
-    %fieldset
-      %legend Add new contact
-      .clearfix
-        %label{:for => "contact[email]"}E-mail
-        %input{:type => "text", :name => "contact[email]", :id => "add-email-field"}
-      .actions
-        %input{:type => "submit", :value => "Add contact", :class => "btn"}
+    %form{:action => url_for("/new_contact"), :method => "post", :id => 'add_contact', :class => 'form-stacked'}
+      %table
+        - @contacts.each do |contact|
+          %tr{ :class => "element-#{contact.id}"}
+            %td= contact.email
+        %tr.create_form
+          %td
+            %input{:type => "text", :name => "contact[email]", :id => "add-url-field"}
