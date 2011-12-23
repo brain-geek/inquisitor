@@ -1,3 +1,8 @@
-- Make it rubygem and try mouting in rails app
-- Automated runner
-- UI in web app
+- Make package at rubygems
+- Automated, scheduled running in daemon(eventmashine?)
+- Resque worker
+- Understandable error message in runner when db_path not given
+- Tests for runner
+- Logging results
+- Daily reports about uptime of services(?)
+- Support for several 'monitor' nodes with one web UI
