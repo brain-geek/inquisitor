@@ -20,8 +20,19 @@ td.status-load
 	margin-bottom: 0px;
 }
 
-#nodes fieldset
+#nodes fieldset .hidden
 {
-	padding-left:10px;
 	display:none;
+}
+
+#nodes fieldset button
+{
+	margin-top: 10px;
+}
+
+a.show_detailed {
+     border-bottom: 1px dotted #00438A;
+     margin-bottom: 10px;
+     text-decoration:  none;
+     font-size: 10px;
 }
