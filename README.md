@@ -10,11 +10,17 @@ Uses sinatra for frontend and outpost gem for monitoring.
 
 Usage
 -----
-###Example running check with sqlite storage:
+###Standalone install:
 
-	bundle exec monitor -d sqlite3://`pwd`/sqlite_database.db
+#####Running check:
 
-###Example mounting to rails app with redis storage:
+	monitor -d sqlite3://`pwd`/sqlite_database.db
+
+#####Running web server:
+
+	monitor_web -d sqlite3://`pwd`/sqlite_database.db
+
+###Mounting to rails app:
 
 #####Add to gemfile:
 
@@ -30,6 +36,19 @@ Usage
 #####Add to routes:
 
 	mount Monit::Web.new, :at => "/monit"
+
+###Start development web server
+
+	shotgun config.dev.ru
+
+Usage
+-----
+####Databases supported
+It should work with all databases supported by datamapper, but for now it is tested only with redis and sqlite.
+
+
+####Cli options:
+You can read availible options from lib/monit/cli.rb . Same options are supported by standalone install
 
 Copyright
 ---------
