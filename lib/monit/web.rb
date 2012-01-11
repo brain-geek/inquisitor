@@ -23,8 +23,6 @@ module Monit
     set :static, true
     set :run, false
 
-    set :environment, :production
-
     get '/' do
       @nodes = Monit::Node.all
       @contacts = Monit::Contact.all
@@ -47,22 +45,5 @@ module Monit
 
       redirect url_for('/')
     end 
-
-    # set environments
-    configure :test do
-      set :raise_errors, true
-      set :logging, false
-    end
-
-    configure :development do
-      Monit.settings.db_path = "sqlite3://#{Dir.pwd}/development.db"
-      set :raise_errors, true
-      set :logging, true    
-    end
-
-    configure :production do
-      set :raise_errors, false
-      set :logging, false
-    end  
   end
 end

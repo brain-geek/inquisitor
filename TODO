@@ -1,7 +1,6 @@
 - Make package at rubygems
 - Automated, scheduled running in daemon(eventmashine?)
 - Resque worker
-- Understandable error message in runner when db_path not given
 - Tests for runner
 - Logging results
 - Daily reports about uptime of services(?)

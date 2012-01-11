@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'net-ping'
   s.add_dependency 'mail'
 
-  s.add_dependency 'sinatra'
+  s.add_dependency "sinatra"
   s.add_dependency 'sinatra-contrib'
   s.add_dependency 'haml'
   s.add_dependency 'emk-sinatra-url-for'
