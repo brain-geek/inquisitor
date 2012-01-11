@@ -41,7 +41,7 @@ Usage
 Features
 -----
 #####Databases supported
-It should work with all databases supported by datamapper, but for now it is tested only with redis and sqlite.
+It should work with all databases supported by datamapper. Tested with postgresql, mysql, redis and sqlite. Format for db_path can be found [in datamapper doc](http://datamapper.org/getting-started.html) - "Specify your database connection".
 
 #####Cli options:
 You can read availible options from lib/monit/cli.rb . Same options are supported by standalone install
