@@ -17,9 +17,11 @@ elsif ENV['DB'] == 'redis'
   Monit.settings.db_path ={:adapter  => "redis"}
   puts "Using redis"
 elsif ENV['DB'] == 'mysql'
+  `mysql -e 'create database monit;'`
   Monit.settings.db_path ="mysql://@localhost/monit"
   puts "Using mysql"
 elsif ENV['DB'] == 'pg'
+  `psql -c 'create database monit;' -U postgres`
   Monit.settings.db_path ="postgres://postgres@localhost/monit"
   puts "Using pg"
   else
