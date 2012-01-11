@@ -15,8 +15,14 @@ if ENV['DB'] == 'sqlite'
   puts "Using sqlite"
 elsif ENV['DB'] == 'redis'
   Monit.settings.db_path ={:adapter  => "redis"}
-  puts "Using redis db"
-else
+  puts "Using redis"
+elsif ENV['DB'] == 'mysql'
+  Monit.settings.db_path ="mysql://@localhost/monit"
+  puts "Using mysql"
+elsif ENV['DB'] == 'pg'
+  Monit.settings.db_path ="postgres://postgres@localhost/monit"
+  puts "Using pg"
+  else
   Monit.settings.db_path = 'sqlite3::memory:'
   puts 'Using sqlite by default!'
 end

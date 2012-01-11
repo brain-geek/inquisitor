@@ -1,0 +1,14 @@
+case ENV['DB']
+when "mysql"; gem "dm-mysql-adapter"
+when "redis"; gem "dm-redis-adapter"
+when "pg"; gem "dm-postgres-adapter"
+when "sqlite"; gem "dm-sqlite-adapter"
+end
+
+def gem(*args)
+  # Override 'gem' method to block any other database gems in the 'real' Gemfile
+  super unless %w(pg sqlite mysql).include?(args.first)
+end
+
+# Eval Gemfile
+eval(IO.read(File.join(File.dirname(__FILE__), 'Gemfile')), binding)
