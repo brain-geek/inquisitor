@@ -48,7 +48,7 @@ module Monit
         when 'ping'
           outpost.add_scout Outpost::Scouts::Ping => '' do
             options :host => uri.host
-            report :up, :response_time => {:less_than => 500}
+            report :up, :response_time => {:less_than => 1000}
           end
         else
           raise URI::InvalidURIError
