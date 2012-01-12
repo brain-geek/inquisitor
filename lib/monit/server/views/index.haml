@@ -8,7 +8,7 @@
         %td= node.url
         %td{:width => '100%'}= node.name 
         %td
-          %button.btn.danger Delete
+          %a.btn.danger{:href => url_for("delete_node/#{node.id}")} Delete
 
   %form.form-stacked.actions{:action => url_for("/new_node"), :method => "post", :id => 'add_node'}
     %fieldset

@@ -34,6 +34,12 @@ module Monit
       json :status => n.check, :log => n.last_log, :id => n.id
     end
 
+    get '/delete_node/:id' do
+      n = Monit::Node.get(params[:id].to_i)
+      n.destroy unless n.nil?
+      redirect url_for('/')
+    end
+
     post '/new_node' do
       Monit::Node.create params["node"]
 
