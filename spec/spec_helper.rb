@@ -24,9 +24,9 @@ elsif ENV['DB'] == 'pg'
   `psql -c 'create database test;' -U postgres`
   Inquisitor.settings.db_path ="postgres://postgres@localhost/test"
   puts "Using pg"
-  else
+else
   Inquisitor.settings.db_path = 'sqlite3::memory:'
-  puts 'Using sqlite by default!'
+  puts 'Using sqlite(by default)'
 end
 
 require File.join(File.dirname(__FILE__), 'support/blueprints.rb')
