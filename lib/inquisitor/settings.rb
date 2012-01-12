@@ -1,10 +1,10 @@
-module Monit
+module Inquisitor
   class Settings
     attr_accessor :mail_from, :mail_subject, :check_period
 
     def initialize
-      self.mail_from = 'changeme.in@monit.settings'
-      self.mail_subject = 'Subject for monit notify letter'
+      self.mail_from = 'changeme.in@Inquisitor.settings'
+      self.mail_subject = 'Subject for Inquisitor notify letter'
       self.check_period = 30
     end
 

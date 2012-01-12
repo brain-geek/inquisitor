@@ -1,6 +1,6 @@
 require 'uri'
 
-module Monit
+module Inquisitor
   class Node
     include DataMapper::Resource  
     property :id,           Serial
@@ -35,7 +35,7 @@ module Monit
     protected
     def outpost
       @outpost ||= begin
-        outpost = Monit.create_outpost(self.name)
+        outpost = Inquisitor.create_outpost(self.name)
         uri = URI.parse(url)
 
         case uri.scheme 

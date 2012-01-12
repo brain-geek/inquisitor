@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require File.join(File.dirname(__FILE__), '..', 'lib', 'monit', 'cli')
+require File.join(File.dirname(__FILE__), '..', 'lib', 'inquisitor', 'cli')
 
-Monit.check_all
+Inquisitor.check_all

@@ -2,11 +2,11 @@ require File.join(File.dirname(__FILE__), '..', 'spec_integration_helper.rb')
 
 describe 'Outpost factory' do
 	before do
-		@contact = Monit::Contact.make
+		@contact = Inquisitor::Contact.make
 	end
 
   it "should add email notifiers" do
-  	outpost = Monit.create_outpost 'title'
+  	outpost = Inquisitor.create_outpost 'title'
 
     outpost.name.should == 'title'
 
@@ -20,7 +20,7 @@ describe 'Outpost factory' do
     end
 
     Mail::TestMailer.deliveries.should == []
-  	Monit::Node.make(:url => 'ping://non-existant.domain').check_and_notify
+  	Inquisitor::Node.make(:url => 'ping://non-existant.domain').check_and_notify
   	Mail::TestMailer.deliveries.count.should == 1
   end
 end

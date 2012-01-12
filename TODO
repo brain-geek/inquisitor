@@ -4,4 +4,4 @@
 - Tests for runner
 - Logging results
 - Daily reports about uptime of services(?)
-- Support for several 'monitor' nodes with one web UI
+- Support for several nodes with one web UI

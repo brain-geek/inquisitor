@@ -3,7 +3,7 @@ require 'rack/test'
 require 'rspec'
 require 'webrat'
 require 'ffaker'
-require File.join(File.dirname(__FILE__), '..', 'lib', 'monit.rb')
+require File.join(File.dirname(__FILE__), '..', 'lib', 'inquisitor.rb')
 
 RSpec.configure do |config|
   config.before(:all)    { Sham.reset(:before_all)  }
@@ -11,21 +11,21 @@ RSpec.configure do |config|
 end
 
 if ENV['DB'] == 'sqlite'
-  Monit.settings.db_path = "sqlite3://#{Dir.pwd}/test.db"
+  Inquisitor.settings.db_path = "sqlite3://#{Dir.pwd}/test.db"
   puts "Using sqlite"
 elsif ENV['DB'] == 'redis'
-  Monit.settings.db_path ={:adapter  => "redis"}
+  Inquisitor.settings.db_path ={:adapter  => "redis"}
   puts "Using redis"
 elsif ENV['DB'] == 'mysql'
-  `mysql -e 'create database monit;'`
-  Monit.settings.db_path ="mysql://@localhost/monit"
+  `mysql -e 'create database Inquisitor;'`
+  Inquisitor.settings.db_path ="mysql://@localhost/Inquisitor"
   puts "Using mysql"
 elsif ENV['DB'] == 'pg'
-  `psql -c 'create database monit;' -U postgres`
-  Monit.settings.db_path ="postgres://postgres@localhost/monit"
+  `psql -c 'create database Inquisitor;' -U postgres`
+  Inquisitor.settings.db_path ="postgres://postgres@localhost/Inquisitor"
   puts "Using pg"
   else
-  Monit.settings.db_path = 'sqlite3::memory:'
+  Inquisitor.settings.db_path = 'sqlite3::memory:'
   puts 'Using sqlite by default!'
 end
 

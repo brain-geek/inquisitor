@@ -1,14 +1,14 @@
 $:.push File.expand_path("../lib", __FILE__)
-require "monit/version"
+require "inquisitor/version"
 
 Gem::Specification.new do |s|
-  s.name        = "monit"
-  s.version     = Monit::VERSION.dup
-  s.description = "Service monitoring daemon with simple web UI."
+  s.name        = "inquisitor"
+  s.version     = Inquisitor::VERSION.dup
+  s.description = "Monitoring daemon with simple web UI."
   s.summary     = s.description
   s.author      = "Rozumiy Alexander"
   s.email       = "brain-geek@yandex.ua"
-  s.homepage    = "https://github.com/brain-geek/monit"
+  s.homepage    = "https://github.com/brain-geek/inquisitor"
 
   s.rubyforge_project = "outpost"
 

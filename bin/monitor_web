@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
-require File.join(File.dirname(__FILE__), '..', 'lib', 'monit', 'cli')
+require File.join(File.dirname(__FILE__), '..', 'lib', 'inquisitor', 'cli')
 
-Monit::Web.bind = '0.0.0.0'
+Inquisitor::Web.bind = '0.0.0.0'
 
-Monit::Web.run!
+Inquisitor::Web.run!

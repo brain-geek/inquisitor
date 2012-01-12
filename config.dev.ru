@@ -1,10 +1,10 @@
-require 'lib/monit'
-require 'lib/monit/web'
+require 'lib/Inquisitor'
+require 'lib/Inquisitor/web'
 
-Monit.settings.db_path = "sqlite3://#{Dir.pwd}/development.db"
-Monit::Web.set :raise_errors, true
-Monit::Web.set :logging, true    
+Inquisitor.settings.db_path = "sqlite3://#{Dir.pwd}/development.db"
+Inquisitor::Web.set :raise_errors, true
+Inquisitor::Web.set :logging, true    
 
 
-run Monit::Web
+run Inquisitor::Web
 

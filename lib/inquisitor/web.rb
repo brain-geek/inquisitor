@@ -4,7 +4,7 @@ require 'sinatra/json'
 require 'sinatra/url_for'
 require 'haml'
 
-module Monit
+module Inquisitor
   class Web < Sinatra::Base
     helpers Sinatra::LinkHeader
     helpers Sinatra::JSON
@@ -24,30 +24,30 @@ module Monit
     set :run, false
 
     get '/' do
-      @nodes = Monit::Node.all
-      @contacts = Monit::Contact.all
+      @nodes = Inquisitor::Node.all
+      @contacts = Inquisitor::Contact.all
       haml :index, :format => :html5
     end
 
     get '/node/status/:id' do
-      n = Monit::Node.get(params[:id].to_i)
+      n = Inquisitor::Node.get(params[:id].to_i)
       json :status => n.check, :log => n.last_log, :id => n.id
     end
 
     get '/node/delete/:id' do
-      n = Monit::Node.get(params[:id].to_i)
+      n = Inquisitor::Node.get(params[:id].to_i)
       n.destroy unless n.nil?
       redirect url_for('/')
     end
 
     post '/node/new' do
-      Monit::Node.create params["node"]
+      Inquisitor::Node.create params["node"]
 
       redirect url_for('/')
     end
 
     post '/contact/new' do
-      Monit::Contact.create params["contact"]
+      Inquisitor::Contact.create params["contact"]
 
       redirect url_for('/')
     end 

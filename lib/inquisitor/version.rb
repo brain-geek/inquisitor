@@ -1,4 +1,4 @@
-module Monit
+module Inquisitor
   PATCH = 0
   MINOR = 1
   MAJOR = 0

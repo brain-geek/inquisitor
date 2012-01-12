@@ -1,4 +1,4 @@
-module Monit
+module Inquisitor
   class Contact
     include DataMapper::Resource  
     property :id,           Serial
