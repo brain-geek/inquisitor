@@ -3,13 +3,12 @@
   %table
     - @nodes.each do |node|
       %tr{ :class => "element-#{node.id}"}
-        %td= node.url
-        %td= node.name 
         %td.status-load{:rel => url_for("status/#{node.id}")}
           %img{:src => url_for('loading.gif'), :height => 36, :width => 32}
-        -#%td
+        %td= node.url
+        %td{:width => '100%'}= node.name 
+        %td
           %button.btn.danger Delete
-
 
   %form.form-stacked.actions{:action => url_for("/new_node"), :method => "post", :id => 'add_node'}
     %fieldset
@@ -17,7 +16,7 @@
         %label{:for => "node[name]"}Url
         %input{:type => "text", :name => "node[url]", :id => "add-url-field"}
       .clearfix
-        %a.show_detailed More        
+        %a.show_detailed{:href => '#'} More options
       .clearfix.hidden
         %label{:for => "node[name]"}Title
         %input{:type => "text", :name => "node[name]", :id => "add-name-field"}
