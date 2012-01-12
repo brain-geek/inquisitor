@@ -29,24 +29,24 @@ module Monit
       haml :index, :format => :html5
     end
 
-    get '/status/:id' do
+    get '/node/status/:id' do
       n = Monit::Node.get(params[:id].to_i)
       json :status => n.check, :log => n.last_log, :id => n.id
     end
 
-    get '/delete_node/:id' do
+    get '/node/delete/:id' do
       n = Monit::Node.get(params[:id].to_i)
       n.destroy unless n.nil?
       redirect url_for('/')
     end
 
-    post '/new_node' do
+    post '/node/new' do
       Monit::Node.create params["node"]
 
       redirect url_for('/')
     end
 
-    post '/new_contact' do
+    post '/contact/new' do
       Monit::Contact.create params["contact"]
 
       redirect url_for('/')

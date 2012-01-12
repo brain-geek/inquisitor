@@ -23,7 +23,7 @@ describe "Basic frontend test" do
       within "#nodes .element-#{n.id}" do |scope|
         scope.should contain n.name
         scope.should contain n.url
-        scope.should have_selector("td[rel='status/#{n.id}']")
+        scope.should have_selector("td[rel='node/status/#{n.id}']")
       end
     end
 
@@ -57,7 +57,7 @@ describe "Basic frontend test" do
 
     Monit::Node.should_receive(:get).with(n.id).and_return(n)
 
-    get "/status/#{n.id}"
+    get "/node/status/#{n.id}"
 
     resp = JSON.parse(response.body)
     resp['status'].should == 'up'
@@ -87,15 +87,15 @@ describe "Basic frontend test" do
     Monit::Contact.first(contact).should_not be_nil
   end  
 
-  it "should delete node at /delete_node/:id" do
+  it "should delete node" do
     test_delete(Monit::Node)
   end
 
-  it "should create node at /new_node" do 
+  it "should create node" do 
     test_new(Monit::Node)
   end
 
-  it "should create contact at /new_contact" do 
+  it "should create contact" do 
     test_new(Monit::Contact)
   end
 
@@ -104,7 +104,7 @@ describe "Basic frontend test" do
     attrs = cls.make_unsaved.attributes
     name = cls.to_s.split('::').last.downcase
     cls.first(attrs).should be_nil
-    post "/new_#{name}", name => attrs
+    post "/#{name}/new", name => attrs
     cls.first(attrs).should_not be_nil
   end
 
@@ -112,7 +112,7 @@ describe "Basic frontend test" do
     attrs = cls.make.attributes
     cls.first(attrs).should_not be_nil
     name = cls.to_s.split('::').last.downcase
-    get "/delete_#{name}/#{attrs[:id]}"
+    get "/#{name}/delete/#{attrs[:id]}"
     cls.first(attrs).should be_nil
   end
 end

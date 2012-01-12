@@ -3,14 +3,14 @@
   %table
     - @nodes.each do |node|
       %tr{ :class => "element-#{node.id}"}
-        %td.status-load{:rel => url_for("status/#{node.id}")}
+        %td.status-load{:rel => url_for("node/status/#{node.id}")}
           %img{:src => url_for('loading.gif'), :height => 36, :width => 32}
         %td= node.url
         %td{:width => '100%'}= node.name 
         %td
-          %a.btn.danger{:href => url_for("delete_node/#{node.id}")} Delete
+          %a.btn.danger{:href => url_for("/node/delete/#{node.id}")} Delete
 
-  %form.form-stacked.actions{:action => url_for("/new_node"), :method => "post", :id => 'add_node'}
+  %form.form-stacked.actions{:action => url_for("/node/new"), :method => "post", :id => 'add_node'}
     %fieldset
       .clearfix
         %label{:for => "node[name]"}Url
@@ -31,7 +31,7 @@
         %tr{ :class => "element-#{contact.id}"}
           %td= contact.email
 
-  %form.form-stacked.actions{:action => url_for("/new_contact"), :method => "post", :id => 'add_contact'}
+  %form.form-stacked.actions{:action => url_for("/contact/new"), :method => "post", :id => 'add_contact'}
     %fieldset
       .clearfix
         %label{:for => "contact[email]"}Email
