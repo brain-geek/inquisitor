@@ -17,12 +17,12 @@ elsif ENV['DB'] == 'redis'
   Inquisitor.settings.db_path ={:adapter  => "redis"}
   puts "Using redis"
 elsif ENV['DB'] == 'mysql'
-  `mysql -e 'create database Inquisitor;'`
-  Inquisitor.settings.db_path ="mysql://@localhost/Inquisitor"
+  `mysql -e 'create database test;'`
+  Inquisitor.settings.db_path ="mysql://@localhost/test"
   puts "Using mysql"
 elsif ENV['DB'] == 'pg'
-  `psql -c 'create database Inquisitor;' -U postgres`
-  Inquisitor.settings.db_path ="postgres://postgres@localhost/Inquisitor"
+  `psql -c 'create database test;' -U postgres`
+  Inquisitor.settings.db_path ="postgres://postgres@localhost/test"
   puts "Using pg"
   else
   Inquisitor.settings.db_path = 'sqlite3::memory:'
