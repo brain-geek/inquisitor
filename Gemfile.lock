@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    inquisitor (0.1.0)
+    inquisitor (0.1.1)
       data_mapper
       emk-sinatra-url-for
       haml
