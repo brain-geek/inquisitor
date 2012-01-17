@@ -8,10 +8,10 @@ describe Inquisitor::Node do
       n.check.should == :up
     end
 
-    it "should tell that page with redirect is ok, not down" do
+    it "should tell that page with redirect is down" do
       n = Inquisitor::Node.make :url => 'http://google.com/'
 
-      n.check.should == :up
+      n.check.should == :down
     end
 
     it "should fail if hostname not found" do
