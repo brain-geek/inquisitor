@@ -42,8 +42,8 @@ module Inquisitor
         when 'http'
           outpost.add_scout Outpost::Scouts::Http => '' do
             options :host => uri.host, :port => uri.port, :path => uri.path.empty? ? '/' : uri.path
-            report :up, :response_code => 200...400
-            report :down, :response_code => 400..600
+            report :up, :response_code => 200...300
+            report :down, :response_code => 300..600
           end
         when 'ping'
           outpost.add_scout Outpost::Scouts::Ping => '' do
